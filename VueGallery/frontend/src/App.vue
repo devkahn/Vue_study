@@ -1,6 +1,6 @@
 <template>
     <myHeader/>
-    <myHome/>
+    <RouterView/>
     <myFooter/>
     
 
@@ -15,12 +15,12 @@
 <script>
 import MyFooter from './components/myFooter.vue';
 import myHeader from './components/myHeader.vue'
-import myHome from './components/pages/myHome.vue';
+
 
 
 export default {
   name: 'App',
-  components: { myHeader, myHome, MyFooter },
+  components: { myHeader,  MyFooter },
  
 }
 </script>
