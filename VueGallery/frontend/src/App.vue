@@ -15,12 +15,19 @@
 <script>
 import MyFooter from './components/myFooter.vue';
 import myHeader from './components/myHeader.vue'
+import store from './scripts/store';
 
 
 
 export default {
   name: 'App',
   components: { myHeader,  MyFooter },
+  setup(){
+    const id = sessionStorage.getItem('id');
+    if(id){
+      store.commit('setAccount', id);
+    }
+  }
  
 }
 </script>

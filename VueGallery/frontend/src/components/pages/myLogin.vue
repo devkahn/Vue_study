@@ -27,6 +27,8 @@
 <script>
 import { reactive } from 'vue'
 import axios from "axios"
+import store from '@/scripts/store'
+import router from '@/scripts/router'
 
 export default {
     setup() {
@@ -40,10 +42,15 @@ export default {
 
         const submit =() =>{
           axios.post("/api/account/login", state.form).then((res) =>{
-            console.log(res);
-            window.alert("로그인을 하였습니다.");
+            store.commit('setAccount', res.data);
+            sessionStorage.setItem("id", res.data);
+             router.push({path: "/"});
+            //window.alert("로그인하였습니다.");
+            
+          })     
+          .catch(()=>{
+            alert("로그인에 실패했습니다. 계정 정보를 확인하세요.");
           })
-
         }
 
         return {state, submit}
